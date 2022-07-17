@@ -1,0 +1,26 @@
+{
+  "name": "house-price-predictor",
+  "version": "1.0.0",
+  "description": "An AI/ML-powered system to predict housing prices for a given area.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senthilkumar-chandramohan/house-price-predictor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/senthilkumar-chandramohan/house-price-predictor/issues"
+  },
+  "homepage": "https://github.com/senthilkumar-chandramohan/house-price-predictor#readme",
+  "dependencies": {
+    "@tensorflow/tfjs": "^3.18.0",
+    "encoding": "^0.1.13",
+    "express": "^4.18.1"
+  }
+}
