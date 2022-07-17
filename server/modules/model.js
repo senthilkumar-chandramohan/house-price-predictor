@@ -1,5 +1,4 @@
 const tf = require("@tensorflow/tfjs");
-const { create } = require("domain");
 const path = require("path");
 
 let model, normalisedFeature, normalisedLabel, trainingComplete = false;
