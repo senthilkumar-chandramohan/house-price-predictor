@@ -4,7 +4,7 @@ An AI/ML-powered system to predict housing prices for a given area.
 # Steps to install and run the app (NOTE: THE APP IS STILL A WIP)
 1. Clone the repository (e.g., git clone https://github.com/senthilkumar-chandramohan/house-price-predictor.git)
 2. cd into house-price-predictor directory, run "npm i"
-3. cd further into client directory and run "npm i"
+3. cd further into "client" directory and run "npm i"
 4. Run "npm run build" to generate client-side bundle
 5. cd ..
 6. Run npm start

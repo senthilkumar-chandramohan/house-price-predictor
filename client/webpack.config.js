@@ -7,7 +7,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     entry: './index.js',
-    mode: 'production',
+    mode: 'development',
     plugins: [
         new FileManagerPlugin({
             events: {

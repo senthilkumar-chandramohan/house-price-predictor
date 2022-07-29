@@ -1,4 +1,4 @@
-const tf = require("@tensorflow/tfjs");
+const tf = require("@tensorflow/tfjs-node");
 const path = require("path");
 
 let model, normalisedFeature, normalisedLabel, trainingComplete = false;
@@ -37,6 +37,28 @@ const createModel = () => {
 
     return model;
 };
+
+const saveModel = async () => {
+    if (trainingComplete) {
+        try {
+            await model.save(`file://${path.join(__dirname, "../../client/public/model")}`);
+            return JSON.stringify({
+                normalisedFeature: {
+                    min: normalisedFeature.min.arraySync(),
+                    max: normalisedFeature.max.arraySync(),
+                },
+                normalisedLabel: {
+                    min: normalisedLabel.min.arraySync(),
+                    max: normalisedLabel.max.arraySync(),
+                }
+            });
+        } catch(exp) {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
 
 const train = async (model, trainingFeatureTensor, trainingLabelTensor) => {
     return model.fit(
@@ -112,16 +134,8 @@ const trainModel = async () => {
     trainingComplete = true;
 };
 
-const getModel = () => {
-    if (trainingComplete) {
-        return model;
-    } else {
-        return null;
-    }
-};
-
 module.exports = {
     trainModel,
-    getModel,
+    saveModel,
     predict,
 };

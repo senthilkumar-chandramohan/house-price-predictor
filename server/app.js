@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 
-const { trainModel, getModel, predict } = require("./modules/model");
+const { trainModel, saveModel, predict } = require("./modules/model");
 
 const app = express();
 
@@ -25,13 +25,13 @@ app.get("/predict", (req, res) => {
     }
 });
 
-app.get("/import-model", (req, res) => {
-    const model = getModel();
-
-    if (model) {
-        res.status(200).json(model);
+app.get("/save-model", async (req, res) => {
+    const normalisedFeatureLabel = await saveModel();
+    if (normalisedFeatureLabel) {
+        res.cookie("normalisedFeatureLabel", normalisedFeatureLabel)
+        res.status(200).json({ success: "Model Saved!" });
     } else {
-        res.status(404).json({error: "Model not ready"});
+        res.status(500).json({ error: "Error saving model" });
     }
 });
 
